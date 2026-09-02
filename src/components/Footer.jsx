@@ -1,3 +1,5 @@
+import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
+
 const Footer = () => {
   return (
     <footer id="contato" className="footer">
@@ -18,9 +20,9 @@ const Footer = () => {
       <div className="footer-column">
         <h3>Redes sociais</h3>
         <div className="social-icons">
-          <span className="icon-button">📘</span>
-          <span className="icon-button">📸</span>
-          <span className="icon-button">🐦</span>
+          <span className="icon-button"><FaFacebookF /></span>
+          <span className="icon-button"><FaInstagram /></span>
+          <span className="icon-button"><FaXTwitter /></span>
         </div>
       </div>
 
