@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router";
 import { FiSearch, FiHeart, FiShoppingCart, FiShoppingBag } from "react-icons/fi";
+import { useCart } from "../context/CartContext";
 
 const Header = () => {
+  const { totalCount } = useCart();
+
   return (
     <header className="header">
         <Link to="/" className="logo"><FiShoppingBag /> ReactShop</Link>
@@ -16,7 +19,7 @@ const Header = () => {
           <span className="icon-button"><FiHeart /></span>
           <span className="icon-button cart">
             <FiShoppingCart />
-            <span className="badge">3</span>
+            {totalCount > 0 && <span className="badge">{totalCount}</span>}
           </span>
         </div>
     </header>

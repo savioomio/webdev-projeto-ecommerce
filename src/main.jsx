@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router/dom'
 import './index.css'
 import RootLayout from './layouts/RootLayout'
 import ErroPage from './pages/ErroPage'
-import Home from './pages/Home'
+import Home, { homeLoader } from './pages/Home'
 import Produtos, { produtosLoader } from './pages/Produtos'
 
 // O router é criado UMA vez, fora da árvore React.
@@ -15,9 +15,10 @@ const router = createBrowserRouter([
     Component: RootLayout,
     errorElement: <ErroPage />,
     children: [
-      { 
-        index: true, 
-        Component: Home 
+      {
+        index: true,
+        Component: Home,
+        loader: homeLoader,
       },
       {
         path: 'produtos',

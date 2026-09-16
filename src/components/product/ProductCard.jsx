@@ -1,3 +1,5 @@
+import AddToCartButton from "../AddToCartButton"
+
 const ProductCard = (product) => {
     product = product.product
 
@@ -10,7 +12,7 @@ const ProductCard = (product) => {
                 <span className="stars">★</span> ({product.rating?.rate ?? '-'})
             </p>
             <p className="product-price">R$ {product.price.toFixed(2).replace('.', ',')}</p>
-            <button className="btn-secondary">Adicionar ao carrinho</button>
+            <AddToCartButton product={product} />
         </div>
     )
 }

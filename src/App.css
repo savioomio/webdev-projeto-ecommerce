@@ -3,11 +3,15 @@
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 32px;
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
 
 .logo {
@@ -87,6 +91,7 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: auto;
   transition: box-shadow 0.3s;
 }
 
@@ -155,8 +160,11 @@
 }
 
 .product-card img {
-  width: 100%;
-  height: auto;
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  align-self: center;
+  object-fit: contain;
   border-radius: 8px;
   margin-bottom: 12px;
 }
@@ -171,6 +179,12 @@
 .product-card h3 {
   margin: 0 0 8px;
   color: var(--text-h);
+  min-height: 80px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product-rating {
