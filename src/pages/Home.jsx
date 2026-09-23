@@ -4,14 +4,14 @@ import HeroSection from '../components/HeroSection'
 import CategorySection from '../components/CategorySection'
 import ProductSection from '../components/ProductSection'
 import BenefitsSection from '../components/BenefitsSection'
+import { buscarProdutos } from '../services/produtos'
 
+// Destaques = os 4 produtos mais bem avaliados
 export async function homeLoader() {
-  const res = await fetch('https://fakestoreapi.com/products?limit=4')
-  if (!res.ok) {
-    throw new Response('Não foi possível carregar os produtos', { status: res.status })
-  }
+  const produtos = await buscarProdutos()
+  produtos.sort((a, b) => b.rating.rate - a.rating.rate)
 
-  return { produtos: await res.json() }
+  return { produtos: produtos.slice(0, 4) }
 }
 
 const Home = () => {

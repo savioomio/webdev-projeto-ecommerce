@@ -1,32 +1,33 @@
 import { useLoaderData } from 'react-router'
-import ProductCard from '../components/product/ProductCard'
+import ProductList from '../components/product/ProductList'
+import CategoryTabs from '../components/category/CategoryTabs'
+import { categorias, buscarCategoria } from '../data/categorias'
+import { buscarProdutos } from '../services/produtos'
 
 // loader: roda ANTES da tela renderizar. O que retornar aqui
 // fica disponível via useLoaderData(). Em erro, dê throw numa Response.
+// Ele roda de novo sempre que o ?categoria= da URL muda (troca de aba).
 export async function produtosLoader({ request }) {
   const url = new URL(request.url)
-  const limit = url.searchParams.get('limit') ?? '8'
+  const slug = url.searchParams.get('categoria')
+  const categoria = slug ? buscarCategoria(slug) : null
 
-  const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}`)
-  if (!res.ok) {
-    throw new Response('Não foi possível carregar os produtos', { status: res.status })
+  if (slug && !categoria) {
+    throw new Response('Categoria não encontrada', { status: 404 })
   }
 
-  return { produtos: await res.json() }
+  return { produtos: await buscarProdutos(slug), categoria }
 }
 
 const Produtos = () => {
-  const { produtos } = useLoaderData()
+  const { produtos, categoria } = useLoaderData()
 
   return (
     <section id="produtos" className="products">
-      <h2>Todos os produtos</h2>
+      <h2>{categoria ? categoria.nome : 'Todos os produtos'}</h2>
 
-      <div className="product-list">
-        {produtos.map((p) => (
-          <ProductCard product={p} />
-        ))}
-      </div>
+      <CategoryTabs categorias={categorias} ativa={categoria?.slug ?? null} />
+      <ProductList produtos={produtos} />
     </section>
   )
 }

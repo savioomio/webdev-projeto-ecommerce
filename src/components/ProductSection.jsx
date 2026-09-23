@@ -1,15 +1,10 @@
-import ProductCard from "./product/ProductCard";
+import ProductList from "./product/ProductList";
 
 const ProductSection = ({ produtos }) => {
     return (
         <section id="produtos" className="products">
             <h2>Produtos em destaque</h2>
-
-            <div className="product-list">
-                {produtos.map((p) => (
-                    <ProductCard key={p.id} product={p} />
-                ))}
-            </div>
+            <ProductList produtos={produtos} />
         </section>
     )
 }

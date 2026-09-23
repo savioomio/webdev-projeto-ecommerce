@@ -49,6 +49,14 @@
   cursor: pointer;
 }
 
+.header-actions a {
+  color: inherit;
+}
+
+.header-actions a:hover {
+  color: var(--accent);
+}
+
 .badge {
   position: absolute;
   top: -8px;
@@ -139,6 +147,110 @@
   border-radius: 10px;
 }
 
+a.category-card {
+  color: var(--text);
+  text-decoration: none;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+a.category-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow);
+  color: var(--accent);
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.tab:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  padding: 8px;
+  font-size: 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.favorite-button:hover,
+.favorite-button.active {
+  color: var(--accent);
+}
+
+.favorite-button.active svg {
+  fill: currentColor;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.login-form {
+  max-width: 360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-h);
+}
+
+.login-form input {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.login-form input:focus {
+  outline: 2px solid var(--accent-border);
+}
+
+.login-form .btn-primary {
+  width: 100%;
+}
+
+.form-error {
+  color: #e5484d;
+  font-size: 15px;
+}
+
 .category-icon {
   display: block;
   font-size: 32px;
@@ -152,6 +264,7 @@
 }
 
 .product-card {
+  position: relative;
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px;

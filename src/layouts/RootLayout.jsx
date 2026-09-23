@@ -3,6 +3,7 @@ import '../App.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { CartProvider } from '../context/CartContext'
+import { FavoritesProvider } from '../context/FavoritesContext'
 
 const RootLayout = () => {
   const navigation = useNavigation()
@@ -10,6 +11,7 @@ const RootLayout = () => {
 
   return (
     <CartProvider>
+    <FavoritesProvider>
       <div className="app">
         <Header />
 
@@ -19,6 +21,7 @@ const RootLayout = () => {
 
         <Footer />
       </div>
+    </FavoritesProvider>
     </CartProvider>
   )
 }

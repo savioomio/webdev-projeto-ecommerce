@@ -1,0 +1,13 @@
+import ProductCard from "./ProductCard";
+
+const ProductList = ({ produtos }) => {
+    return (
+        <div className="product-list">
+            {produtos.map((p) => (
+                <ProductCard key={p.id} product={p} />
+            ))}
+        </div>
+    );
+};
+
+export default ProductList;

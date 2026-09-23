@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router";
-import { FiSearch, FiHeart, FiShoppingCart, FiShoppingBag } from "react-icons/fi";
+import { FiSearch, FiHeart, FiShoppingCart, FiShoppingBag, FiUser } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
+import { useFavorites } from "../context/FavoritesContext";
 
 const Header = () => {
   const { totalCount } = useCart();
+  const { favorites } = useFavorites();
 
   return (
     <header className="header">
@@ -16,7 +18,11 @@ const Header = () => {
 
         <div className="header-actions">
           <span className="icon-button"><FiSearch /></span>
-          <span className="icon-button"><FiHeart /></span>
+          <Link to="/favoritos" className="icon-button" aria-label="Favoritos">
+            <FiHeart />
+            {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
+          </Link>
+          <Link to="/login" className="icon-button" aria-label="Entrar"><FiUser /></Link>
           <span className="icon-button cart">
             <FiShoppingCart />
             {totalCount > 0 && <span className="badge">{totalCount}</span>}
